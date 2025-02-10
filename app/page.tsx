@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { auth } from "@/configs/firebaseConfig";
 import ProfileAvatar from "./_components/ProfileAvatar";
 import { useAuthContext } from "./provider";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function Home() {
   // const user = auth?.currentUser;
@@ -14,6 +15,7 @@ export default function Home() {
   console.log(user?.user)
   return (
     <div>
+      
       <header className="flex  flex-wrap sm:justify-start  sm:flex-nowrap z-50 w-full bg-white border-b border-gray-200 text-sm py-3 sm:py-0 dark:bg-neutral-800 dark:border-neutral-700">
         <nav className="relative  p-4 max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8" aria-label="Global">
           <div className="flex items-center justify-between">
