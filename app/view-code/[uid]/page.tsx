@@ -10,6 +10,7 @@ import { setLazyProp } from "next/dist/server/api-utils";
 import { useParams } from "next/navigation";
 import React, { use, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export interface RECORD {
   id: number;
@@ -26,6 +27,7 @@ function ViewCode() {
   const [code, setCode] = useState("");
   const [record, setRecord] = useState<RECORD | null>();
   const [isReady, setIsReady] = useState(false);
+  const router = useRouter();
   const GetRecordInfo = async () => {
     try {
       setloading(true);
@@ -42,8 +44,10 @@ function ViewCode() {
     } catch (e) {
       toast({
         title: "Error : Something went wrong",
+        
         // type: "error",
       });
+      router.push('/')
 
       console.log(e);
     }
