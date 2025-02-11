@@ -1,5 +1,6 @@
 import Constants from "@/data/Constants";
 import { constants } from "buffer";
+import { log } from "console";
 import { NextRequest } from "next/server";
 import OpenAI from "openai";
 
@@ -7,9 +8,33 @@ const openai = new OpenAI({
   baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPEN_ROUTER_AI_API_KEY,
 });
+
+const AiModelList = [
+  {
+    name: "Gemini Google",
+    icon: "/google.png",
+    modelName: "google/gemini-2.0-pro-exp-02-05:free",
+  },
+  {
+    name: "Llama by Meta",
+    icon: "/meta.png",
+    modelName: "meta-llama/llama-3.2-11b-vision-instruct:free",
+  },
+  {
+    name: "Deep Seek",
+    icon: "/deepseek.png",
+    modelName: "deepseek/deepseek-r1-distill-llama-8b",
+  },
+];
 export async function POST(req: NextRequest) {
   const { model, description, imageUrl } = await req.json();
-  const modelname = Constants.AiModelList.find((item) => item.modelName === model)?.modelName;
+
+  console.log(model);
+  console.log(description);
+  console.log(imageUrl);
+  const modelname = AiModelList.find((item) => item.name === model)?.modelName;
+
+  console.log(modelname);
   if (!modelname) {
     return new Response("Model not found", {
       status: 400,
@@ -17,33 +42,26 @@ export async function POST(req: NextRequest) {
     });
   }
 
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${process.env.OPEN_ROUTER_AI_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: modelname ?? "google/gemini-2.0-pro-exp-02-05:free",
-      stream: true,
-      messages: [
-        {
-          role: "user",
-          content: [
-            {
-              type: "text",
-              text: description,
+  const response = await openai.chat.completions.create({
+    model: modelname ?? "google/gemini-2.0-pro-exp-02-05:free",
+    stream: true,
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: description,
+          },
+          {
+            type: "image_url",
+            image_url: {
+              url: imageUrl,
             },
-            {
-              type: "image_url",
-              image_url: {
-                url: imageUrl,
-              },
-            },
-          ],
-        },
-      ],
-    }),
+          },
+        ],
+      },
+    ],
   });
 
   const stream = new ReadableStream({
@@ -60,7 +78,6 @@ export async function POST(req: NextRequest) {
   return new Response(stream, {
     headers: {
       "Content-Type": "text/event-stream; charset= utf-8",
-      Connection: "keep-alive",
     },
   });
 }

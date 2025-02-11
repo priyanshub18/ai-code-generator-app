@@ -2,6 +2,7 @@ import { db } from "@/configs/db";
 import { WireFrameToCodeTable } from "@/configs/schema";
 import { error } from "console";
 import { eq } from "drizzle-orm";
+import { Are_You_Serious } from "next/font/google";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -15,7 +16,7 @@ export async function POST(req: NextRequest) {
       model: model,
       description: description,
       createdBy: email,
-      //   code: json(),
+      // code: JSON(),
     })
     .returning({ id: WireFrameToCodeTable.id });
 
@@ -33,6 +34,12 @@ export async function GET(req: NextRequest) {
   }
 
   return NextResponse.json({
-    error : "No response found",
-  })
+    error: "No response found",
+  });
+}
+
+export async function PUT(req: NextRequest) {
+  const { uid, codeResponse } = await req.json();
+  const result = await db.update(WireFrameToCodeTable).set({ code: codeResponse }).where(eq(WireFrameToCodeTable.uid, uid)).returning({ id: WireFrameToCodeTable.id });
+  return NextResponse.json(result);
 }
