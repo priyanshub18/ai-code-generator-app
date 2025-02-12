@@ -11,7 +11,7 @@ function CodeEditor({ codeResp, isReady }: any) {
                     externalResources: ["https://cdn.tailwindcss.com"],
                     showNavigator: true,
                     showTabs: true,
-                    editorHeight: 759
+                    editorHeight: 600
                 }}
                 customSetup={{
                     dependencies: {

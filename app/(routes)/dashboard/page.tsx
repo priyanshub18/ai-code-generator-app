@@ -1,19 +1,11 @@
-import { Bot, ImageUp } from 'lucide-react'
 import React from 'react'
 import ImageUpload from './_components/ImageUpload'
 
 function Dashboard() {
     return (
-        <div>
-            {/* <div className=' flex flex-row'> */}
-            {/* <Bot className=""/> */}
-            <h2 className='font-bold text-3xl text-center'>
-                Convert your ideas into code
-            </h2>
-
-
-            {/* </div> */}
-            <ImageUpload/>
+        <div className='xl:px-20'>
+            <h2 className='font-bold text-3xl'>Convert Wireframe to Code</h2>
+            <ImageUpload />
         </div>
     )
 }

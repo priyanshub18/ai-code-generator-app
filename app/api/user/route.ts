@@ -6,7 +6,7 @@ import { usersTable } from "@/configs/schema";
 
 export async function POST(req: NextRequest) {
     const { userEmail, userName } = await req.json();
-
+    console.log(userEmail)
     // try {
     const result = await db.select().from(usersTable)
         .where(eq(usersTable.email, userEmail));
@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         const result: any = await db.insert(usersTable).values({
             name: userName,
             email: userEmail,
-            credits: 0,
+            credits: 10,
             // @ts-ignore
         }).returning(usersTable);
 
@@ -28,4 +28,16 @@ export async function POST(req: NextRequest) {
     // } catch (e) {
     //     return NextResponse.json(e)
     // }
+}
+
+export async function GET(req: Request) {
+    const reqUrl = req.url;
+    const { searchParams } = new URL(reqUrl);
+    const email = searchParams?.get('email');
+
+    if (email) {
+        const result = await db.select().from(usersTable)
+            .where(eq(usersTable.email, email));
+        return NextResponse.json(result[0]);
+    }
 }
