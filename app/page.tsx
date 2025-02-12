@@ -75,13 +75,16 @@ export default function Home() {
 
           <div className="mt-8 gap-3 flex justify-center">
             {user?.user?.email ?
-              <a className="inline-flex justify-center items-center 
-      gap-x-3 text-center bg-gradient-to-tl from-blue-600
-       to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-gray-600 py-3 px-4 dark:focus:ring-offset-gray-800"
-                href="/dashboard">
-                Get started
-                <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
-              </a>
+      //         <a className="inline-flex justify-center items-center 
+      // gap-x-3 text-center bg-gradient-to-tl from-blue-600
+      //  to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-md focus:outline-none focus:ring-1 focus:ring-gray-600 py-3 px-4 dark:focus:ring-offset-gray-800"
+      //           href="/dashboard">
+      //           Get started
+      //           <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+      //         </a>
+      <a href="/dashboard">
+        <Button>Get Started</Button>
+      </a>
               : <Authentication >
                 <Button>Get Started</Button>
               </Authentication>
@@ -105,7 +108,7 @@ export default function Home() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 items-center gap-2">
 
           <a className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800" href="#">
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-black rounded-xl">
               <svg className="flex-shrink-0 size-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="10" height="14" x="3" y="8" rx="2" /><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4" /><path d="M8 18h.01" /></svg>
             </div>
             <div className="mt-5">
@@ -119,7 +122,7 @@ export default function Home() {
           </a>
 
           <a className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800" href="#">
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-black rounded-xl">
               <svg className="flex-shrink-0 size-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 7h-9" /><path d="M14 17H5" /><circle cx="17" cy="17" r="3" /><circle cx="7" cy="7" r="3" /></svg>
             </div>
             <div className="mt-5">
@@ -133,7 +136,7 @@ export default function Home() {
           </a>
 
           <a className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800" href="#">
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-black rounded-xl">
               <svg className="flex-shrink-0 size-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" /></svg>
             </div>
             <div className="mt-5">
@@ -147,7 +150,7 @@ export default function Home() {
           </a>
 
           <a className="group flex flex-col justify-center hover:bg-gray-50 rounded-xl p-4 md:p-7 dark:hover:bg-neutral-800" href="#">
-            <div className="flex justify-center items-center size-12 bg-blue-600 rounded-xl">
+            <div className="flex justify-center items-center size-12 bg-black rounded-xl">
               <svg className="flex-shrink-0 size-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z" /><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" /></svg>
             </div>
             <div className="mt-5">

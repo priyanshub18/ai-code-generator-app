@@ -17,7 +17,14 @@ function Credits() {
         console.log(result.data)
         setUserData(result.data);
     }
+    const IncreaseCredits = async () => {
+        const result = await axios.post('/api/user/credits/increase', {
+            email: user?.email
+        });
+        console.log(result.data)
+        setUserData(result.data);
 
+    }
     return (
         <div>
             <h2 className='font-bold text-2xl'>Credits</h2>
@@ -28,7 +35,7 @@ function Credits() {
                     <h2 className='font-bold text-xl'>My Credits:</h2>
                     {userData?.credits && <p className='text-lg text-gray-500'>{userData?.credits} Credits left</p>}
                 </div>
-                <Button>Buy More Credits</Button>
+                <Button onClick={()=>IncreaseCredits()}>Buy More Credits</Button>
             </div>
         </div>
     )
